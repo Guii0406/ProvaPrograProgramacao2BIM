@@ -37,5 +37,12 @@ namespace ProvaProgramacao
             formAluno.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormProfessor formProfessor = new FormProfessor(listaDeCursos, listaDeAlunos, this);
+            formProfessor.Show();
+            this.Hide();
+        }
     }
 }

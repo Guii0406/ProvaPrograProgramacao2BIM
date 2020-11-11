@@ -14,6 +14,7 @@ namespace ProvaProgramacao
         public DateTime dataInicio { get; set; }
         public DateTime dataLimite { get; set; }
         public string nota { get; set; }
+        public bool concluido { get; set; }
 
         public Curso(string nome, int duracao, List<string> disciplinas)
         {
@@ -23,6 +24,7 @@ namespace ProvaProgramacao
             this.nota = "cursando";
             this.dataInicio = DateTime.Today;
             this.dataLimite = dataInicio.AddDays(duracao);
+            this.concluido = false;
         }
     }
 
