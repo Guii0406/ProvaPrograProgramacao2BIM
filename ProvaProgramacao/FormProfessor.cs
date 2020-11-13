@@ -45,7 +45,7 @@ namespace ProvaProgramacao
 
             foreach (Curso c in aluno.cursos)
             {
-                string[] item = new string[2] { c.nome, c.nota };
+                string[] item = new string[3] { c.nome, c.nota, c.dataLimite.ToString("dd/MM/yyyy") };
                 item[0] = c.nome;
                 if (c.concluido == true && c.nota == "cursando")
                 {
@@ -71,6 +71,20 @@ namespace ProvaProgramacao
             else
             {
                 MessageBox.Show("O aluno ainda não concluiu este curso");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int index = listView1.SelectedItems[0].Index;
+            if (DateTime.Today >= aluno.cursos[index].dataLimite)
+            {
+                aluno.cursos[index].dataLimite = aluno.cursos[index].dataLimite.AddDays((int)numericUpDown2.Value);
+                listView1.SelectedItems[0].SubItems[2].Text = aluno.cursos[index].dataLimite.ToString("dd/MM/yyyy");
+            }
+            else
+            {
+                MessageBox.Show("O prazo ainda não acabou");
             }
         }
     }
