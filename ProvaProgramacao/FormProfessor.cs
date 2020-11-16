@@ -87,5 +87,10 @@ namespace ProvaProgramacao
                 MessageBox.Show("O prazo ainda não acabou");
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
