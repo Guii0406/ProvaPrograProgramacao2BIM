@@ -10,7 +10,7 @@ namespace ProvaProgramacao
     {
         public string nome { get; set; }
         public string cpf { get; set; }
-        public List<Curso> cursos { get; set; }
+        public new List<Curso> cursos { get; set; }
         
 
         public Aluno(string nome, string cpf, List<Curso> cursos)

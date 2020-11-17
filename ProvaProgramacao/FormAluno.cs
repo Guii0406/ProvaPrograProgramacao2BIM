@@ -13,7 +13,7 @@ namespace ProvaProgramacao
     public partial class FormAluno : Form
     {
         Aluno aluno;
-        public FormAluno(Aluno aluno)
+        public FormAluno(ref Aluno aluno)
         {
             InitializeComponent();
             label1.Text = aluno.nome;

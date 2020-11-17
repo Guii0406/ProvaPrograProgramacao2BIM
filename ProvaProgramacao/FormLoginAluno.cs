@@ -36,11 +36,15 @@ namespace ProvaProgramacao
 
             if (checkBox1.Checked)
             {
-                cursos.Add(listaDeCursos[0]);
+                List<string> disciplinasCsharp = new List<string>();
+                disciplinasCsharp.AddRange(new string[2] { "algoritimos", "Fundamentos de programação" });
+                cursos.Add(new Curso("c#", 60, disciplinasCsharp));
             }
             if (checkBox2.Checked)
             {
-                cursos.Add(listaDeCursos[1]);
+                List<string> disciplinasDevWeb = new List<string>();
+                disciplinasDevWeb.AddRange(new string[3] { "HTML", "CSS", "JavaScript" });
+                cursos.Add(new Curso("Desenvolvimento Web", 90, disciplinasDevWeb));
             }
 
             listaDeAlunos.Add(new Aluno(textBox1.Text, maskedTextBox1.Text, cursos));
@@ -50,21 +54,26 @@ namespace ProvaProgramacao
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Aluno aluno = null;
             bool achou = false;
             foreach(Aluno a in listaDeAlunos)
             {
                 if(a.cpf == maskedTextBox2.Text)
                 {
                     achou = true;
-                    FormAluno formAluno = new FormAluno(a);
-                    formAluno.Show();
+                    //FormAluno formAluno = new FormAluno(ref a);
+                    //formAluno.Show();
+                    aluno = a;
                     break;
                 }
             }
             if(achou == false)
             {
                 MessageBox.Show("CPF não indentificado");
+                return;
             }
+            FormAluno formAluno = new FormAluno(ref aluno);
+            formAluno.Show();
         }
 
         private void FormLoginAluno_FormClosed(object sender, FormClosedEventArgs e)
