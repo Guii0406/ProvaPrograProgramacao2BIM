@@ -39,7 +39,7 @@ namespace ProvaProgramacao
                 MessageBox.Show("Aluno não encontrado");
                 return;
             }
-
+            listView1.Items.Clear();
             label2.Text = aluno.nome;
             label3.Text = aluno.cpf;
 
@@ -63,10 +63,11 @@ namespace ProvaProgramacao
         private void button2_Click(object sender, EventArgs e)
         {
             int index = listView1.SelectedItems[0].Index;
-            if (aluno.cursos[index].concluido == true)
+            if (aluno.cursos[index].concluido == true || DateTime.Today >= aluno.cursos[index].dataLimite)
             {
                 aluno.cursos[index].nota = numericUpDown1.Value.ToString();
                 listView1.SelectedItems[0].SubItems[1].Text = numericUpDown1.Value.ToString();
+                aluno.cursos[index].concluido = true;
             }
             else
             {
@@ -77,7 +78,7 @@ namespace ProvaProgramacao
         private void button3_Click(object sender, EventArgs e)
         {
             int index = listView1.SelectedItems[0].Index;
-            if (DateTime.Today >= aluno.cursos[index].dataLimite)
+            if (DateTime.Today >= aluno.cursos[index].dataLimite && aluno.cursos[index].concluido == false)
             {
                 aluno.cursos[index].dataLimite = aluno.cursos[index].dataLimite.AddDays((int)numericUpDown2.Value);
                 listView1.SelectedItems[0].SubItems[2].Text = aluno.cursos[index].dataLimite.ToString("dd/MM/yyyy");

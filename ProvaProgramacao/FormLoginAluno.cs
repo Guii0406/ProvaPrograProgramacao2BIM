@@ -49,6 +49,10 @@ namespace ProvaProgramacao
 
             listaDeAlunos.Add(new Aluno(textBox1.Text, maskedTextBox1.Text, cursos));
 
+            textBox1.Clear();
+            maskedTextBox1.Clear();
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
             //MessageBox.Show($"Data de inicio: {listaDeAlunos[0].cursos[0].dataInicio.ToString("dd/MM/yyyy")}\nData limite: {listaDeAlunos[0].cursos[0].dataLimite.ToString("dd/MM/yyyy")} ");
         }
 
@@ -74,6 +78,7 @@ namespace ProvaProgramacao
             }
             FormAluno formAluno = new FormAluno(ref aluno);
             formAluno.Show();
+            maskedTextBox2.Clear();
         }
 
         private void FormLoginAluno_FormClosed(object sender, FormClosedEventArgs e)

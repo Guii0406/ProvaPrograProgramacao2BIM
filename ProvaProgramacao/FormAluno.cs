@@ -38,15 +38,15 @@ namespace ProvaProgramacao
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int index = listView1.SelectedItems[0].Index;
-            if (aluno.cursos[index].concluido == true)
-            {
-                MessageBox.Show("Você ja finalizou este curso");
-                return;
-            }
-            aluno.cursos[index].concluido = true;
             try
             {
+                int index = listView1.SelectedItems[0].Index;
+                if (aluno.cursos[index].concluido == true)
+                {
+                    MessageBox.Show("Você ja finalizou este curso");
+                    return;
+                }
+                aluno.cursos[index].concluido = true;
                 listView1.SelectedItems[0].SubItems[1].Text = "concluido/esperando nota";
             }
             catch (Exception erro) { }
